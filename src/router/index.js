@@ -11,7 +11,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      ...AuthRoutes[0],
+      ...AuthRoutes,
     },
   ],
 })
