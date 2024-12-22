@@ -8,7 +8,7 @@ import { FormKit } from '@formkit/vue'
   <FormKit
     type="form"
     :actions="false"
-    incomplete-message="No se pudo enviar, revisa las notificaciones"
+    incomplete-message="No se pudo enviar, revisa los mensajes"
     classes="bg-white px-5 py-20 rounded-lg space-y-10 mt-10"
   >
     <FormKit
