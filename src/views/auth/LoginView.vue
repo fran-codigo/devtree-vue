@@ -6,7 +6,8 @@ const toast = inject('toast')
 
 const handleSubmit = async (formData) => {
   try {
-    await AuthAPI.login(formData)
+    const { data } = await AuthAPI.login(formData)
+    localStorage.setItem('AUTH_TOKEN', data)
   } catch (error) {
     toast.open({
       message: error.response.data.error,
