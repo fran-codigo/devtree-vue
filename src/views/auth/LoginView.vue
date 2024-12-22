@@ -1,14 +1,30 @@
 <script setup>
-import { FormKit } from '@formkit/vue'
+import { inject } from 'vue'
+import AuthAPI from '@/api/AuthAPI'
+
+const toast = inject('toast')
+
+const handleSubmit = async (formData) => {
+  try {
+    await AuthAPI.login(formData)
+  } catch (error) {
+    toast.open({
+      message: error.response.data.error,
+      type: 'error',
+    })
+  }
+}
 </script>
 
 <template>
   <h1 class="text-title">Iniciar Sesión</h1>
 
   <FormKit
+    id="login-form"
     type="form"
     :actions="false"
     incomplete-message="No se pudo enviar, revisa los mensajes"
+    @submit="handleSubmit"
     classes="bg-white px-5 py-20 rounded-lg space-y-10 mt-10"
   >
     <FormKit
