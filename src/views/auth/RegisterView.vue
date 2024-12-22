@@ -1,14 +1,36 @@
 <script setup>
-import { FormKit } from '@formkit/vue'
+import { inject } from 'vue'
+import { reset } from '@formkit/vue'
+import AuthAPI from '@/api/AuthAPI'
+
+const toast = inject('toast')
+
+const handleSubmit = async (formData) => {
+  try {
+    const { data } = await AuthAPI.register(formData)
+    toast.open({
+      message: data.msg,
+      type: 'success',
+    })
+    reset('register-form')
+  } catch (error) {
+    toast.open({
+      message: error.response.data.error,
+      type: 'error',
+    })
+  }
+}
 </script>
 
 <template>
   <h1 class="text-title">Crear Cuenta</h1>
 
   <FormKit
+    id="register-form"
     type="form"
     :actions="false"
     incomplete-message="No se pudo enviar, revisa los mensajes"
+    @submit="handleSubmit"
     classes="bg-white px-5 py-20 rounded-lg space-y-10 mt-10"
   >
     <FormKit
