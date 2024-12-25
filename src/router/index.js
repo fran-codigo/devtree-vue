@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AuthRoutes from './auth'
+import AdminRoutes from './admin'
 import HomeView from '@/views/home/HomeView.vue'
 
 const router = createRouter({
@@ -12,6 +13,9 @@ const router = createRouter({
     },
     {
       ...AuthRoutes,
+    },
+    {
+      ...AdminRoutes,
     },
   ],
 })
