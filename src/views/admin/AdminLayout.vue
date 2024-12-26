@@ -1,5 +1,13 @@
 <script setup>
+import { useUserStore } from '@/stores/user'
 import NavigationTabs from '@/components/admin/NavigationTabs.vue'
+import { onMounted } from 'vue'
+
+const userStore = useUserStore()
+
+onMounted(() => {
+  userStore.getUser()
+})
 </script>
 
 <template>

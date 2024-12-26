@@ -7,4 +7,12 @@ export default {
   login(data) {
     return api.post('/auth/login', data)
   },
+  getUser() {
+    const token = localStorage.getItem('AUTH_TOKEN')
+    return api.get('/user', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
 }
