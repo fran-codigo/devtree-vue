@@ -10,4 +10,7 @@ export default {
   getUser() {
     return api.get('/user')
   },
+  updateProfile(data) {
+    return api.patch('/user', data)
+  },
 }
