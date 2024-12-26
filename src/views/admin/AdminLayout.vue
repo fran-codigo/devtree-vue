@@ -36,7 +36,7 @@ onMounted(() => {
           rel="noreferrer noopener"
           :to="{ name: 'profile' }"
         >
-          Visitar Mi Perfil
+          Visitar Mi Perfil: /{{ userStore.user.handle }}
         </RouterLink>
       </div>
 

@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', () => {
   async function getUser() {
     try {
       const { data } = await AuthAPI.getUser()
-      console.log(data)
+      user.value = data
     } catch (error) {
       console.log(error)
     }
